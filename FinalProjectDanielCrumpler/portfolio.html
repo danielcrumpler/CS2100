@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Crumpler - Portfolio</title>
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="scripts/main.js" defer></script>
+</head>
+<body>
+    <div id="title"><h1>Daniel Crumpler</h1></section>
+    <div id="navBar">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">Résumé</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+            </ul>
+        </nav>
+<div id="app">
+    <div id="projects">
+        <section id="viewProjects">
+            <div id="projectsInImage">
+                <ul>
+                    <li>
+                        <h2>Computer Science II - CS 1302</h2>
+                        <h3><a href="./pdfs/SyllabusCS1302.pdf">Class Information</a></h3>
+                    </li>
+                    <li v-for="project in projects1302">
+                        <a v-bind:key="project.id" v-bind:href="project.url" target="_blank">
+                            <img height="200" :alt="project.altText" v-bind:src="project.image">
+                            <p>{{project.altText}}</p>
+                            <a v-bind:href="project.pdf">Requirements</a>
+                        </a>
+                    </li>
+                    <li>
+                        <h2>Introduction to Web Development - CS 2100</h2>
+                        <h3><a href="./pdfs/SyllabusCS2100.pdf">Class Information</a></h3>
+                    </li>
+                    <li v-for="project in projects2100">
+                        <a v-bind:key="project.id" v-bind:href="project.url" target="_blank">
+                            <img height="200" :alt="project.altText" v-bind:src="project.image">
+                            <p>{{project.altText}}</p>
+                        </a>
+                    </li>
+                    <li>
+                        <h2>Non-School Related</h2>
+                    </li>
+                     <li v-for="project in projectsnon">
+                        <a v-bind:key="project.id" v-bind:href="project.url" target="_blank">
+                            <img height="200" :alt="project.altText" v-bind:src="project.image">
+                            <p>{{project.altText}}</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>
+        <footer>
+          <div id="copyright">
+            <p>Copyright &copy; 2019 Daniel Crumpler. All rights reserved.</p>
+          </div>
+        </footer>
+</body>
+</html>

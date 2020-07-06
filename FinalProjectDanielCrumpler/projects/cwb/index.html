@@ -1,0 +1,352 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="sans1.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <TITLE>Weight &amp; Balance Calculator Cessna 172N - Javascript</TITLE>
+  <meta name="Author" content="Daniel Crumpler">
+  <meta name="Publisher" content="Daniel Crumpler, Carrollton, GA, USA">
+  <meta name="Content-Language" content="en-US">
+  <meta name="Identifier-URL" content="http://www.internationalflyingclub.org/src/wb172N.html">
+
+<style type="text/css"><!--
+   /* this style credit David Williams page:
+   http://www.dmjwilliams.co.uk/gbsep_weight_balance.htm   */
+img.bug {
+   position: relative;
+   left: 0px;
+   top: 0px;
+   margin: 0px;
+   padding: 0px;
+}
+--></style>
+
+<script type="text/javascript">
+<!--
+
+  // ALL THE EDITABLE VARIABLES SPECIFIC TO THE AC TO INITIATE 
+  // OR RESET THE FIELDS TO DEFAULT VALUES FOLLOW: *************
+  // This data comes from AC current W & B records and
+  // Airplane Flight Manual/'POH' or Type Certificate Data Sheet.
+
+  var ACmodel = "Cessna 172N";
+  var Nnumber = "N75615";
+  var oilqtmax = "6";          // max oil capacity, quarts - ref.
+  var fuel1galmax = "40";      // max useable fuel, gallons - ref.
+  var bagg1max = "120";        // maximum baggagge, lbs. - ref.
+  var bagg2max = "50";         // maximum baggagge, lbs. - ref.
+
+  // values for AC max gross weight and maneuvering speed at max gross
+  maxwt = 2300;
+  Vam = 97;                    // kts
+
+function initWB() {
+  // This function - December 2003 - Robert A. Booty
+  // http://home.new.rr.com/trumpetb/alph/
+  var df = document.forms[0];  // reduce clutter
+
+  df.ew.value = 1445.7;        // from AC current W&B records
+  df.ewarm.value = 39.64;       // from AC current W&B records
+
+  //df.oilqt.value = 6;          // 'quarts' oil is a convenient input
+  //df.oilarm.value = -14.0;
+
+  df.f1w.value = 225;          // front seats
+  df.f2w.value = 200;
+  df.f1arm.value = 37.0;
+
+  df.fuel1gal.value = 40;      // 'gallons' fuel is a convenient input
+  df.fuel1arm.value = 47.9;
+
+  df.r1w.value = 0;           // rear seats
+  df.r2w.value = 0;
+  df.r1arm.value = 73.0;
+
+  df.bag1w.value = 25;         // baggage area 1
+  df.bag1arm.value = 95.0;
+
+  df.bag2w.value = 0;         // baggage area 2
+  df.bag2arm.value = 123.0;
+
+  // ********** END EDITABLE SPECIFIC DEFAULT VALUES ***********
+  // make a GIF for the load limits chart and calibrate x and y in WB_Plot function.
+
+  doCalc();
+}
+
+function WB_Plot(weight, arm) {
+  // This function --> credit David Williams page:
+  // http://www.dmjwilliams.co.uk/gbsep_weight_balance.htm
+
+  // Left axis 34 in. margin on the wb172N.gif is 50 pixels.
+  // 48 in. on the wb172N.gif graph is 453 pixels.  
+  // 48-34=14 in., 453-50=403 px., 403/14=28.79 px/inx cal. factor...
+
+  var x = Math.round(50 + (arm - 34) * 28.79) - 16;    //16 is 1/2 bug dia.
+
+  // Bottom axis 1400 lb. on the wb172N.gif is 232 pixels.
+  // 2400 lb. on the wb172N.gif graph is 1 pixel.
+  // 2400-1400=1000 lb., 232-1=231 px. ...
+
+  var y = 232 - Math.round(((weight - 1400) / 1000) * 231) - 16;
+
+//  with (document.images.bugImage.style) {
+//    left = x + 'px';
+//    top  = y + 'px';
+//    visibility = "visible";
+//  }
+  var z = document.images.bugImage.style;
+  z.left = x + 'px';
+  z.top = y + 'px';
+  z.visibility = "visible";
+}
+
+function doCalc() {
+  // This function - March, 2001 - Robert A. Booty
+  // last revised December 10, 2003 - R.A.B.
+  // http://home.new.rr.com/trumpetb/alph/
+  var df = document.forms[0];   // reduce clutter
+
+  var ew = df.ew.value;
+  var ewarm = df.ewarm.value;
+  var ewmom = ew * ewarm;
+  df.ewmom.value = Math.round(ewmom);
+
+  //var oilqt = df.oilqt.value;  // (full oil is incl. in EW data)
+  //var oilw = oilqt / 4 * 7.5;
+  //df.oilw.value = Math.round(oilw * 10.0) / 10.0;
+  //var oilarm = df.oilarm.value;
+  //var oilmom = oilw * oilarm;
+  //df.oilmom.value = Math.round(oilmom);
+
+  var f1w = df.f1w.value;
+  var f2w = df.f2w.value;
+  var f1arm = df.f1arm.value;
+  var f1mom = -1 * (-f1w - f2w) * f1arm;
+  df.f1mom.value = Math.round(f1mom);
+
+  var fuel1gal = df.fuel1gal.value;
+  var fuel1w = fuel1gal * 6;
+  df.fuel1w.value = Math.round(fuel1w);
+  var fuel1arm = df.fuel1arm.value;
+  var fuel1mom = fuel1w * fuel1arm;
+  df.fuel1mom.value = Math.round(fuel1mom);
+
+  var r1w = df.r1w.value;
+  var r2w = df.r2w.value;
+  var r1arm = df.r1arm.value;
+  var r1mom = -1 * (-r1w - r2w) * r1arm;
+  df.r1mom.value = Math.round(r1mom);
+
+  var bag1w = df.bag1w.value;
+  var bag1arm = df.bag1arm.value;
+  var bag1mom = bag1w * bag1arm;
+  df.bag1mom.value = Math.round(bag1mom);
+
+  var bag2w = df.bag2w.value;
+  var bag2arm = df.bag2arm.value;
+  var bag2mom = bag2w * bag2arm;
+  df.bag2mom.value = Math.round(bag2mom);
+
+  var totmom = -1 * (-ewmom -f1mom -fuel1mom -r1mom -bag1mom -bag2mom);
+  df.totmom.value = Math.round(totmom);
+
+  var totwt = -1 * (-ew -f1w -f2w -fuel1w -r1w -r2w -bag1w -bag2w);
+  df.totwt.value = Math.round(totwt);
+
+  var totarm = totmom / totwt;
+  df.totarm.value = Math.round(totarm*100)/100;
+
+  // Decrease in Va with decrease in weight based on approximation of:
+  // decrease Va by half the percentage that the total weight is below maximum.
+  var Vva = Vam - ((((maxwt - totwt) / maxwt) / 2) * Vam);
+  df.Vva.value = Math.round(Vva);
+
+  // Show the bug on the graph...
+  WB_Plot(df.totwt.value, df.totarm.value);
+}
+
+function popwindow(theURL,winName,features) {
+  window.open(theURL,winName,features);
+}
+// -->
+</script>
+</head>
+
+    <body text="#000000" bgcolor="#00f5ff" link="#660066" vlink="#660066" onload="initWB();">
+        <a name="top"></a>
+        <center>
+            <h2>C172N Weight and Balance Calculator</h2>
+            <NOSCRIPT><FONT COLOR="#bb0000"><i><b>**Javascript is required to use this calculator. Yours seems to be disabled.**</b></i><br></FONT></NOSCRIPT>
+            <FORM action="">
+<TABLE border=0 cellspacing=0 cellpadding=0 width="530"><TR><TD align=center>
+<table border=1 cellspacing=0 cellpadding=1 bgcolor="#ffffcc" width="100%">
+<tr align=center>
+<td bgcolor="#ffcccc" colspan=2>1976 Cessna 172 - <script type="text/javascript"><!--
+document.write(Nnumber); //--></script>
+</td>
+
+<td>&nbsp;Weight&nbsp;<br>(lbs)</td>
+
+<td>Arm
+<br>(inches)</td>
+
+<td bgcolor="#dddddd">Moment
+<br>(in-lb)</td>
+</tr>
+
+<tr>
+<td colspan=2>&nbsp;<b>Empty Weight</b></td>
+
+<td align=center><input type="text" size="6" name="ew" onblur="doCalc()"></td>
+
+<td align=center><input type="text" size="7" name="ewarm" onblur="doCalc()"></td>
+
+<td align=center bgcolor="#dddddd"><input type="text" size="8" name="ewmom"></td>
+</tr>
+
+<tr>
+<td colspan=5>&nbsp;
+<small>(Note: E.W. data includes full 6 qts. 11.25 lb. oil @ -14.0 in. )</small></td>
+</tr>
+
+<tr>
+<td colspan=2>&nbsp;<b>Front Seat 1 &amp; 2</b></td>
+
+<td align=center bgcolor="#ffff33"><input type="text" size="6" name="f1w" onblur="doCalc()">&nbsp;<input type="text" size="6" name="f2w" onblur="doCalc()"></td>
+
+<td align=center><input type="text" size="7" name="f1arm" onblur="doCalc()"></td>
+
+<td align=center bgcolor="#dddddd"><input type="text" size="8" name="f1mom"></td>
+</tr>
+
+<tr>
+<td>&nbsp;<b>Fuel</b></td>
+
+<td align=center bgcolor="#ffff33">gal : <input type="text" size="4" name="fuel1gal" onblur="doCalc()"></td>
+
+<td align=center bgcolor="#dddddd"><input type="text" size="6" name="fuel1w"></td>
+
+<td align=center><input type="text" size="7" name="fuel1arm" onblur="doCalc()"></td>
+
+<td align=center bgcolor="#dddddd"><input type="text" size="8" name="fuel1mom"></td>
+</tr>
+
+<tr>
+<td colspan=2>&nbsp;<b>Rear Seat 1 &amp; 2</b></td>
+
+<td align=center bgcolor="#ffff33"><input type="text" size="6" name="r1w" onblur="doCalc()">&nbsp;<input type="text" size="6" name="r2w" onblur="doCalc()"></td>
+
+<td align=center><input type="text" size="7" name="r1arm" onblur="doCalc()"></td>
+
+<td align=center bgcolor="#dddddd"><input type="text" size="8" name="r1mom"></td>
+</tr>
+
+<tr>
+<td colspan=2>&nbsp;<b>Baggage Area 1<br><small>(<script type="text/javascript">
+<!--
+document.write(bagg1max); //--></script> lb max for area 1+2)</small></b></td>
+
+<td align=center bgcolor="#ffff33"><input type="text" size="6" name="bag1w" onblur="doCalc()"></td>
+
+<td align=center><input type="text" size="7" name="bag1arm" onblur="doCalc()"></td>
+
+<td align=center bgcolor="#dddddd"><input type="text" size="8" name="bag1mom"></td>
+</tr>
+
+<tr>
+<td colspan=2>&nbsp;<b>Baggage Area 2<br><small>(<script type="text/javascript">
+<!--
+document.write(bagg2max); //--></script> lb max)</small></b></td>
+
+<td align=center bgcolor="#ffff33"><input type="text" size="6" name="bag2w" onblur="doCalc()"></td>
+
+<td align=center><input type="text" size="7" name="bag2arm" onblur="doCalc()"></td>
+
+<td align=center bgcolor="#dddddd"><input type="text" size="8" name="bag2mom"></td>
+</tr>
+
+<tr bgcolor="#aaaaaa">
+<td colspan=2>&nbsp;</td>
+
+<td colspan=3>
+&nbsp; <input type="button" name="doit" value="&nbsp;Calculate&nbsp;" onClick="doCalc()"> &nbsp; 
+<input type="button" name="undoit" value="Reset" onclick="initWB()"></td>
+</tr>
+
+<tr bgcolor="#ffcc33">
+<td colspan=2>&nbsp;<b>Gross Weight <br><small>(<script type="text/javascript"><!--
+document.write(maxwt); //--></script> lb max)</small></b></td>
+
+<td align=center><input type="text" size="6" name="totwt"></td>
+
+<td>&nbsp;</td>
+
+<td align=center bgcolor="#dddddd"><input type="text" size="9" name="totmom"></td>
+</tr>
+
+<tr bgcolor="#ffcc33">
+<td colspan=3>&nbsp;<b>Loaded Center of Gravity:</b></td>
+
+<!-- ?? maxlength='5' is a workaround to mask a
+      Math.round(totarm*100)/100 bug in IE 5 with +oilarm values -->
+<td align=center><input type="text" size="7" name="totarm" maxlength="5"></td>
+
+<td bgcolor="#dddddd">&nbsp;</td>
+</tr>
+
+<tr bgcolor="#ccccff">
+<td colspan=2>&nbsp;<b>Maneuvering Speed</b></td>
+
+<td align=center>VA (kts) : <input type="text" size="6" name="Vva"></td>
+
+<td align=left colspan=2><small>&nbsp;&lt;=(decr. with decr. wt.)</small></td>
+</tr>
+
+</table>
+
+</TD></TR>
+<TR><TD>
+<small>
+Calculated <b>Gross Weight</b> and <b>C.G.</b> point must lie
+within the utility or normal category envelope limits as per 
+the <i><b>Pilot's Operating Handbook</b></i> as shown in the graph below.</small>
+</TD></TR>
+<TR><TD>
+
+<p>
+<table bgcolor="#ffffff" border=1 cellspacing=0 cellpadding=3 width="100%">
+<tr><td>
+<br>
+  <div style="background-image: url('./images/wb172N.gif'); width: 460px; height: 270px;">
+    <img id="bugImage" class="bug" src="./images/crosshair.gif" width="32" height="32" alt="">
+  </div>
+</td>
+</tr>
+<tr><td bgcolor="#ffffcc">
+<small>This chart requires a CSS compliant browser like IE, Chrome, Mozilla, Safari, Opera. 
+<br>The CSS styling and plotting function came from 
+<a href="http://www.dmjwilliams.co.uk/gbsep_weight_balance.htm" target="_blank">
+David Williams.</a>&nbsp;
+The calculations and javascript came from Robert A. Booty. Program modifications made by
+<a href="http://www.internationalflyingclub.org" target="_blank">
+Daniel Crumpler.</a></small></td>
+</tr></table>
+</TD></TR>
+
+<TR><TD>
+<table border=0 cellspacing=0 cellpadding=0 width="530">
+    <tr>
+      <td><img src="./images/caution.gif" width="32" height="30"></td>
+      <td><small><b>This calculator is presented for educational or amusement purposes 
+        only.<br>You, as pilot in command, are solely responsible for assuring correct 
+        data<br>and proper loading of your aircraft prior to flight.</b></small></td>
+    </tr>
+</table>
+</TD></TR>
+
+</TABLE></FORM>
+
+</center>
+
+</body></html>

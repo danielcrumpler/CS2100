@@ -1,0 +1,17 @@
+body, td, th, p, ul, ol, div, li, dt, dd, a, i, b, br, center,
+blockquote, input, select, textarea, button, form
+/* iCab 2.9.1 needs more than just body... */  {
+   font-family: helvetica, arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+   font-family: helvetica, arial, sans-serif;
+}
+
+pre, code, tt {
+   font-family: courier, monospace;
+}
+
+a:link { color : #0000FF; }
+a:visited { color : #660066; }
+a:hover { color : #ff0000; text-decoration: none; }

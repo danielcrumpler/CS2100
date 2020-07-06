@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>A Simple Calculator</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles/calculator.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
+	<script src="scripts/main.js" defer></script>
+	
+    <!--[if lt IE 9]>
+	<script src=" http://html5shim.googlecode.com/svn/trunk/html5.js ">
+	</script>
+	<![endif]-->
+</head>
+<body>
+	<div id="wrapper">
+      <section id="app">
+		<header><h1> {{header}} </h1></header>
+		<main>
+			<form id="operands">
+				<label for="firstOperand">x:</label>
+				<input type="number" v-model.lazy.number = "firstOperand" id="firstOperand" name="firstOperand" required="required">
+				<br>
+				<label for="myEmail">y:</label>
+				<input type="number" v-model.lazy.number = "secondOperand" id="secondOperand" name="secondOperand" required="required">
+				<br>
+				<label for="result">Result:</label>
+				<label id="result">{{result}}</label>
+			</form>
+			<form id="operations" >
+              <button v-on:click = "addXAndY" type="button">x + y</button>
+				<button v-on:click = "subtractXAndY" type="button">x - y</button>
+				<button v-on:click = "multiplyXAndY" type="button">x * y</button>
+				<button v-on:click = "divideXAndY" type="button">x / y</button><br>
+				<button v-on:click = "squareX" type="button">sqrt(x)</button>
+				<button v-on:click = "absoluteValueX" type="button">abs(x)</button>
+				<button v-on:click = "XToThePowerOfY" type="button">x ^ y</button>
+				<button v-on:click = "cosineOfX" type="button">cos(x)</button><br>
+				<button v-on:click = "displayPiConstant" type="button">Display the constant pi</button>
+			</form>
+		</main>
+		<footer>
+			{{footer}}
+		</footer>
+      </section>
+	</div>
+</body>
+</html>
