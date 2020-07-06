@@ -1,0 +1,132 @@
+/* General styles - put these straight into your stylesheet */
+header, main, footer { 
+	display: block; 
+}
+
+body {
+    margin: 0;
+    background-image: url(../images/bg.png);
+}
+
+html {
+    color: #eee;
+    font-family: 'Avenir-Book', 'Avenir';
+    font-size: 10px;
+    background-color: #ccc;
+}
+
+/* all pages  */
+ #wrapper {
+    width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #333333; 
+}
+
+header h1 { 
+	padding: 15px 0 15px 1em;
+	margin-top: 0;
+    font-family: serif, 'Times New Roman' ;
+	color: #fff;
+	font-size: 3em;
+	background: linear-gradient(90deg, #0473bb 50%, #333 );
+}
+
+#page_head .left {
+    border-radius: 10.5em 0 0 10.5em;
+    border-left: .5em #999 solid;
+    border-top: .05em solid #999;
+    border-bottom: .05em solid #999;
+}
+
+#page_head .center {
+    border-top: .05em solid #999;
+    border-bottom: .05em #999 solid;
+}
+
+#page_head .right {
+    border-radius: 0  
+    10.5em 10.5em 0 ;
+    border-right: .5em #999 solid;
+    border-top: .05em solid #999;
+    border-bottom: .05em solid #999;
+}
+
+#page_head img {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    background-color: aliceblue;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    color: #333;
+    text-align: left;
+    padding: 1.5em;
+    border-radius: 1.5em;
+    box-shadow: inset .2em .2em .2em .2em #333333
+}
+
+/* Begin part 3. Implement ruleset based on description */
+
+#container, footer p {
+    text-align: center;
+}
+
+footer {    
+    margin: 2em;
+    padding-bottom: 5em;
+    
+}
+
+header {
+    margin-top: 0em;
+    padding: 0em;
+}
+
+nav {
+    text-align: center;
+    color: white;
+    padding-top: 3em;
+    padding-bottom: 2em;
+}
+
+nav ul {
+    margin: 0em;
+}
+
+nav li {
+    display: inline;
+    list-style: none;
+}
+
+nav a, footer a {
+    text-decoration: none;
+    font-size: 2em;
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 0em;
+    color: white;
+}
+
+main h2, main a, main dt {
+    color: #1483cc;
+}
+
+main h2 {
+    font-family: serif, 'Times New Roman'
+}
+
+footer a {
+    font-size: 1em;
+}
+
+.school {
+    font-weight: bold;
+    font-size: 1.2em;
+}
