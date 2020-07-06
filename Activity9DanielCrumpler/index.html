@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Object-oriented JavaScript example</title>
+
+    <script></script>
+  </head>
+  <body>
+    <p>This example requires you to enter commands in your browser's JavaScript console 
+    (see <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools">
+    What are browser developer tools</a> for more information).</p>
+
+    <form method="post" action="">
+      <label for="fname" id="firstName">First Name</label>
+      <input id="fname" name="fname" value="">
+      <input id="lname" name="lname" value="">
+      
+    </form>
+  </body>
+    <script>
+	const input_fname = document.querySelector('#fname');
+	
+	/**
+	* Object Literal
+	*
+	**/
+	const person = {
+		name: {
+			firstname: ['Bob'],
+			lastname:['Bobberson'],
+			
+			getFullName: function() {
+				return this.firstname + " " + this.lastname;
+			}
+		},
+		age: [32],
+		gender: ['male'],
+		interests: ['music', 'hiking', 'singing'],
+		
+		getInterests: function() {
+			let interestsString = "";
+			if (this.interests.length === 1) {
+				return this.interests[0];
+			}
+			if (this.interests.length === 2) {
+				return this.interests[0] + ' and ' + this.interests[1];
+			}
+			for (let i = 0; i < this.interests.length; i++) {
+				if (i === this.interests.length - 1) {
+					interestsString += 'and ' + this.interests[i];
+					return interestsString;
+				}
+				interestsString += this.interests[i] + ', ';
+			}
+			return interestsString;
+		},
+
+		bio: function() {
+			alert(this.name.getFullName() + ' is ' + 
+			this.age + ' years old. He likes ' + this.getInterests() + '.');
+		},
+		
+		greeting: function() {
+			alert("hello i/'m " + this.name.firstname);
+		},
+	};
+
+	/**
+	* Class where you can instantiate objects
+	*
+	**/
+	function Person(firstName, lastName, age, gender, interests) {
+		this.firstname = firstName;
+		this.lastname = lastName;
+		this.age = age;
+		this.gender = gender;
+		this.interests = interests;
+		
+		this.greeting = function() {
+			alert("hello i/'m " + this.firstname);
+		},
+
+		this.getFullName = function() {
+			return this.firstname + ' ' + this.lastname;
+		}
+
+		this.getPronoun = function() {
+			if (this.gender.toLowerCase() === 'male') {
+				return 'He';
+			}
+			else if (this.gender.toLowerCase() === 'female') {
+				return 'She';
+			}
+			else {
+				return 'It';
+			}
+		}
+
+		this.getInterests = function() {
+			let interestsString = "";
+			if (this.interests.length === 1) {
+				return this.interests[0];
+			}
+			if (this.interests.length === 2) {
+				return this.interests[0] + ' and ' + this.interests[1];
+			}
+			for (let i = 0; i < this.interests.length; i++) {
+				if (i === this.interests.length - 1) {
+					interestsString += 'and ' + this.interests[i];
+					return interestsString;
+				}
+				interestsString += this.interests[i] + ', ';
+			}
+			return interestsString;
+		},
+
+		this.bio = function() {
+			alert(this.getFullName() + ' is ' + 
+			this.age + ' years old. ' + this.getPronoun() + ' likes ' + this.getInterests() + '.');
+		}
+
+	}
+
+	const bob = new Person('Bob', 'Bobberson', 32, 'Male', ['music', 'hiking', 'singing']);
+	const ana = new Person('Ana', 'Peralta', 16, 'Female', ['swimming', 'movies', 'reading']);
+	const sal = new Person('Sal', 'Peralta', 35, 'Male', ['guitar', 'stats']);
+
+    </script>
+</html>

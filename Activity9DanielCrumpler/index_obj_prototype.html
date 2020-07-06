@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Object-oriented JavaScript inheritance</title>
+  </head>
+
+  <body>
+
+    <div id="output"></div>
+  </body>
+
+    <script>
+	  let newInfo = document.querySelector('#output');
+	  function appendDataToOutput(stringToAppend){
+		  let newParagraph = document.createElement('p');
+		  newParagraph.textContent = stringToAppend;
+		  newInfo.appendChild(newParagraph);
+	  };
+	  
+      function Person(first, last, age, gender, interests) {
+        this.name = {
+          first,
+          last
+        };
+        this.age = age;
+        this.gender = gender;
+        this.interests = interests;        
+      };
+
+      Person.prototype.greeting = function() {
+      	console.log('Hi, my name is ' + this.name.first + ' ' + this.name.last);
+      };
+
+      Person.prototype.getFullName = function() {
+		return this.name.first + ' ' + this.name.last;
+	  };
+
+	  Person.prototype.getPronoun = function() {
+		if (this.gender.toLowerCase() === 'male') {
+			return 'He';
+		}
+		else if (this.gender.toLowerCase() === 'female') {
+			return 'She';
+		}
+		else {
+			return 'It';
+		}
+	  };
+
+	Person.prototype.getInterests = function() {
+		let interestsString = "";
+		if (this.interests.length === 1) {
+			return this.interests[0];
+		}
+		if (this.interests.length === 2) {
+			return this.interests[0] + ' and ' + this.interests[1];
+		}
+		for (let i = 0; i < this.interests.length; i++) {
+			if (i === this.interests.length - 1) {
+				interestsString += 'and ' + this.interests[i];
+				return interestsString;
+			}
+			interestsString += this.interests[i] + ', ';
+		}
+		return interestsString;
+	  };
+
+	  Person.prototype.bio = function() {
+		console.log(this.getFullName() + ' is ' + 
+		this.age + ' years old. ' + this.getPronoun() + ' likes ' + this.getInterests() + '.');
+	  };
+
+	  Person.prototype.farewell = function() {
+	  	console.log('¡Adiós amigo!');
+	  };
+
+	  function Teacher(first, last, age, gender, interests, subject) {
+	  	Person.call(this, first, last, age, gender, interests);
+        this.subject = subject;
+	  };
+
+	  Teacher.prototype = Object.create(Person.prototype);
+	  
+	  Object.defineProperty(Teacher.prototype, 'constructor', {
+	  	value: Teacher,
+	  	enumerable: false,
+	  	writeable: true
+	  });
+
+	  Teacher.prototype.greeting = function() {
+      	console.log('Hello, my name is ' + this.name.first + ' ' + this.name.last + ', and I teach ' + this.subject + '.');
+      };
+
+      var person1 = new Person('Tammi', 'Smith', 17, 'female', ['music', 'skiing', 'kickboxing']);
+	  var person2 = new Person('Carlos', 'Peralta', 13, 'male', ['gymnastics', 'cubing', 'devices']);
+	  var person3 = Object.create(person1);
+	  var teacher1 = new Teacher('Daniel', 'Crumpler', 19, 'male', ['fishing', 'golfing'], 'math');
+    </script>
+</html>
