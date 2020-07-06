@@ -1,0 +1,209 @@
+/* General styles */
+html {
+    color: #eee;
+    font-family: 'Avenir-Book', 'Avenir';
+    font-size: 10px;
+    /*  This property was in the body. That was why the 
+        gray box appeared at the end of the body */
+    background-image: url(../images/bg.png);
+}
+
+header, main, footer { 
+	display: block; 
+}
+
+body {
+    margin: 0;
+}
+
+/* styles for all pages  */
+#wrapper {
+    width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #333333; 
+}
+
+header h1 { 
+	padding: 15px 0 15px 1em;
+	margin-top: 0;
+    font-family: serif, 'Times New Roman' ;
+	color: #fff;
+	font-size: 3em;
+	background: linear-gradient(90deg, #0473bb 50%, #333 );
+}
+
+#page_head .left{
+    border-radius: 10.5em 0 0 10.5em;
+    border-left: .5em #999 solid;
+    border-top: .05em solid #999;
+    border-bottom: .05em solid #999;
+}
+
+#page_head .center{
+    border-top: .05em solid #999;
+    border-bottom: .05em #999 solid;
+}
+
+#page_head .right{
+    border-radius: 0  
+    10.5em 10.5em 0 ;
+    border-right: .5em #999 solid;
+    border-top: .05em solid #999;
+    border-bottom: .05em solid #999;
+}
+
+#page_head img {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+main{
+    background-color: aliceblue;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    color: #333;
+    text-align: left;
+    padding: 1.5em;
+    border-radius: 1.5em;
+    box-shadow: inset .2em .2em .2em .2em #333333;
+    line-height: 1.75em;
+}
+
+/* Follow instructions and implement the rulesets based on description */
+#container, footer p{    
+    text-align: center;
+}
+
+footer {
+    margin: 2em;
+    padding-bottom: 5em;
+}
+
+header{
+	margin-top: 0;	
+	padding: 0;	
+}
+
+nav { 
+	text-align: center;
+	color: white;
+    padding: 1em;
+}
+nav ul {
+	margin: 0;
+}
+
+nav li {
+    display: inline;
+    list-style-type: none;
+}
+nav a, footer a{ 
+	text-decoration: none;
+	font-size: 2em;
+	padding: 1em;
+    color: gainsboro;
+}
+
+main h2, dt, main a {
+	color: #1483cc;	  
+}
+
+main h2{
+    font-family: serif, 'Times New Roman'
+}
+
+footer a{
+    font-size: 1em;
+}
+
+#title h1{
+    writing-mode: vertical-lr;
+    float: left;
+    font-size: 3em;
+    margin-top: 1em;
+    margin-bottom: 0em;
+    margin-right: 0em;
+    margin-left: 0.9em;
+    display: inline-block;
+    letter-spacing: 0.25em;
+    word-spacing: 0.15em;
+    font-family: 'Aldrich';
+}
+
+nav a:visited{
+    color: #ccc; 
+}
+
+nav a:hover{
+    color: #1473dd;
+}
+
+footer a:hover{
+    color: #1473dd
+}
+
+#ironcross {
+    background-image: url("/images/ironcross.png");
+    width: 179px;
+    height: 281px;
+    float: right;
+}
+
+main p::first-line{
+    font-variant: small-caps;
+}
+
+table{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+
+table caption{
+    font-family: 'Rock Salt', cursive;
+    font-size: 1.5em;
+}
+
+table td{
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    line-height: 1.5em;
+}
+
+table th{
+    text-align: center;
+    border-bottom-style: dashed;
+    border-bottom-color: #0473bb;
+    border-bottom-width: 1px;
+}
+
+table td:first-child{
+    border-right-style: dashed;
+    border-right-color: #0473bb;
+    border-right-width: 1px; 
+    text-align: center;
+    font-weight: bold;
+}
+
+table th:first-child{
+    border-right-style: dashed;
+    border-right-color: #0473bb;
+    border-right-width: 1px; 
+}
+
+table tr:nth-of-type(even){
+    background-color: rgba(4, 115, 187, 0.1);
+}
+
+/* This is for the home page only. */
+.school{
+    font-weight: bold;
+    font-size: 1.2em;
+}
