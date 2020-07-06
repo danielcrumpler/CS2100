@@ -1,0 +1,123 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <title>Vue App</title>
+<style>
+    .highlight{
+        background: yellow;
+        color: blue
+    }
+    .danger{
+        color: red;
+    }
+    .viewInline{
+        display: inline;
+    }
+</style>
+
+  </head>
+
+  <body>
+    <div id="app">
+        <h2>{{ message }}</h2>
+        <p>{{ greeting }}</p>
+    </div>
+    
+    <div id="regularHTML">
+        <p title="This is what would normally happen without vue directives.">
+
+        Hover over this text to see a static tool tip...
+
+        </p>
+    </div>
+
+    <div id="app2">
+        <span v-bind:title="message">
+            Hover over with your mouse to see what happens. 
+            You will see a dynamically bound title in a tool tip.
+        </span>
+        <p v-bind:class="{highlight: highlighted, danger: errorText}">
+           This should be highlighted. 
+        </p>
+    </div>
+
+    <div id="app3">
+        <p v-if="qtySocks < minimumThreshold" v-bind:class="{danger: qtySocks<minimumThreshold}">
+            Stock (qty of socks: {{qtySocks}}) is below the minimum threshold of 
+            {{minimumThreshold}}. Must reorder now!!!
+        </p>
+        <p v-else> 
+            Stock of socks: {{qtySocks}} is above the minimum threshold of 
+            {{minimumThreshold}}. No need to reorder now!!!
+        </p>    
+
+        <div>
+            <button v-on:click="buySocks">Purchase one pair!!!</button>
+        </div>
+        <button v-on:click="returnSocks">Return one pair to stock</button>
+    </div>
+
+    <div id="app4">
+        <ol>
+            <li v-for="item in todos">
+                {{ item.text }}
+            </li>
+        </ol>
+        
+        <input type="text">
+        <button>Add Item to List</button>
+        <button>Add reversed Message to List</button>
+    </div>
+    <div id="app5">
+        <p></p>
+        <input type="text">
+    </div>
+    <script>
+      const App = new Vue({
+        el: "#app",
+        data: {
+          message: 'You loaded this page on ' + new Date().toLocaleString(),
+          greeting: 'Hola puta'
+        }
+      });
+
+      const App2 = new Vue({
+        el: "#app2",
+        data: {
+          message: 'This is a dynamically created tooltip.',
+          highlighted: true,
+          errorText: true,
+        }
+      });
+
+      const App3 = new Vue({
+        el: "#app3",
+        data: {
+          qtySocks: 9,
+          minimumThreshold: 2,
+        },
+        methods: {
+          buySocks: function(){
+            this.qtySocks -= 1;
+          },
+          returnSocks: function(){
+            this.qtySocks += 1;
+          },
+        }
+      });
+
+      const App4 = new Vue({
+        el: "#app4",
+        data: {
+          todos: [{text: "Get Bananas"},
+                  {text: "Get the MeAt"},
+                  {text: "Get Juiced"},]
+        }
+      });
+    </script>
+  </body>
+</html>
