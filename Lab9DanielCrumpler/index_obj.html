@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Object-oriented JavaScript example</title>
+  </head>
+
+  <body>
+    <p>This example requires you to enter commands in your browser's JavaScript console (see <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools">What are browser developer tools</a> for more information).</p>
+
+  </body>
+
+    <script>
+    const pet = {
+      name: {
+        firstName: ['Brownie'],
+        lastName: ['Crumpler'],
+        getFullName: function() {
+			return this.firstName + " " + this.lastName;
+		},
+      },
+      age: [19],
+      favoriteFood: ['tuna'],
+      gender: ['female'],
+      type: ['cat'],
+      color: ['brown', 'black'],
+      isHungry: false,
+      speak : function() {
+        alert('meow');
+      },
+      makeHungry: function() {
+        isHungry: true;
+      },
+      feed: function() {
+        if (this.isHungry === true) {
+          alert('Here, ' + this.name.firstName + ' is some ' + this.favoriteFood);
+          this.isHungry = false;
+        }
+        else {
+          alert(this.name.firstName + ' is not hungry.');
+        }
+      },
+      giveDescription: function() {
+        alert('My pet is called ' + this.name.getFullName() + '. ' + this.getPronoun() + ' is an ' + this.age + ' year old ' + this.getColor() + ' ' + this.type + '. ' + this.getSecondPronoun() + ' favorite food is ' + this.favoriteFood + '. ');
+      },
+	  getPronoun: function() {
+		if (this.gender[0].toLowerCase() === 'male') {
+			return 'He';
+		}
+		else if (this.gender[0].toLowerCase() === 'female') {
+			return 'She';
+		}
+		else {
+			return 'It';
+		}
+	  },
+	  getSecondPronoun: function() {
+		if (this.gender[0].toLowerCase() === 'male') {
+			return 'His';
+		}
+		else if (this.gender[0].toLowerCase() === 'female') {
+			return 'Her';
+		}
+		else {
+			return 'Its';
+		}
+	  },
+	  getColor: function() {
+		let colorString = "";
+		if (this.color.length === 1) {
+			return this.color[0];
+		}
+		if (this.color.length === 2) {
+			return this.color[0] + ' and ' + this.color[1];
+		}
+		for (let i = 0; i < this.color.length; i++) {
+			if (i === this.color.length - 1) {
+				colorString += 'and ' + this.color[i];
+				return colorString;
+			}
+			colorString += this.color[i] + ', ';
+		}
+		return colorString;
+	  },
+	  play: function() {
+	    this.makeHungry();
+	    this.feed();
+	    alert(this.isHungry);
+	    this.speak();
+	    this.giveDescription();
+	  },	        
+    }
+
+    function Bicycle(numberOfGears, type, color, currentGear) {
+      this.numberOfGears = numberOfGears;
+      this.type = type;
+      this.color = color;
+      this.currentGear = currentGear;
+      this.speed = 0;
+
+      this.speedUp = function() {
+        this.speed++;
+      }
+
+      this.applyBreak = function() {
+        if (this.speed === 0) {
+        	alert('already stopped');
+        } else {
+        	this.speed--;
+        }	
+      }
+
+      this.shiftUp = function() {
+        if (this.currentGear === this.numberOfGears) {
+          alert('cannot shift up');
+        } else {
+          this.currentGear++;
+        }
+      }
+
+      this.shiftDown = function() {
+        if (this.currentGear === 1) {
+          alert('cannot shift down');
+        } else {
+          this.currentGear--;
+        }
+      }
+      
+      this.description= function() {
+        alert('This is a '+ this.color + ' ' + this.type + '.' + ' It has ' + this.numberOfGears + ' gears.' + ' The bike is moving at a speed of ' + this.speed + ' in the ' + this.currentGear + ' gear.');
+      }
+
+      this.getCurrentSpeed = function() {
+        alert(this.speed);
+      } 
+    }
+
+    const bike1 = new Bicycle(10, 'road bike', 'neon green', 9);
+    const bike2 = new Bicycle(21, 'mountain bike', 'gunmetal grey', 1);
+
+    function bike1Go() {
+      bike1.description();
+      for (let i = 0; i < 10; i++) {
+        bike1.speedUp();
+      }
+      bike1.shiftUp();
+      bike1.description();
+      bike1.shiftUp();
+      bike1.description();
+      bike1.shiftUp();
+      bike1.description();
+    }
+
+    function bike2Go() {
+      bike2.description();
+      for (let i = 0; i < 5; i++) {
+        bike2.speedUp();
+      }
+      for (let i = 10; i > 0; i--) {
+        bike2.applyBreak();
+      }
+      bike2.shiftDown();
+      bike2.shiftDown();
+      bike2.description();
+    }
+    </script>
+</html>
