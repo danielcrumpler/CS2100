@@ -1,0 +1,108 @@
+<html>
+	<head>
+		<script src="script/my_script.js" defer></script>
+		<style>
+			#output_calendar * {
+			  box-sizing: border-box;
+			}
+
+			#output_calendar ul {
+			  padding-left: 0;
+			  width: 300px;
+			}
+
+			#output_calendar li {
+			  display: block;
+			  float: left;
+			  width: 25%;
+			  border: 2px solid white;
+			  padding: 5px;
+			  height: 40px;
+			  background-color: #4A2DB6;
+			  color: white;
+			}
+
+			html {
+			  font-family: sans-serif;
+			}
+
+			h2 {
+			  font-size: 16px;
+			}
+
+			.a11y-label {
+			  margin: 0;
+			  text-align: right;
+			  font-size: 0.7rem;
+			  width: 98%;
+			}
+
+			body {
+			  margin: 10px;
+			  background: #f5f9fa;
+			}
+			#change_color{
+				width:600px;
+				height: 400px;
+				border: 1px solid black;
+			}
+			#change_color button{
+				margin: 1em;
+			}
+			div {
+				min-height: 200px;
+				padding: 2em;
+				margin: 1em;
+				max-width: 600px;
+				border: 1px solid black;
+			}
+		</style>
+
+	</head>
+	<body>
+		<div id="output">
+
+			<ul>
+			</ul>
+
+			<p></p>
+
+		</div>
+
+		<div id="search">
+			<input type="search" id="search_ex" name="search_ex">
+			<button type="button">Search</button>
+			<ul></ul>
+
+			<p></p>
+		</div>
+
+		<div id="output_calendar" style="height: 500px;overflow: auto;">
+		  <label for="month">Select month: </label>
+		  <select id="month">
+			<option value="January">January</option>
+			<option value="February">February</option>
+			<option value="March">March</option>
+			<option value="April">April</option>
+			<option value="May">May</option>
+			<option value="June">June</option>
+			<option value="July">July</option>
+			<option value="August">August</option>
+			<option value="September">September</option>
+			<option value="October">October</option>
+			<option value="November">November</option>
+			<option value="December">December</option>
+		  </select>
+
+		  <h1></h1>
+
+		  <ul></ul>
+	</div>
+
+	<div id="change_color">
+	<form method="post" action="https://www.westga.edu/~crolka/CSG/scripts/submit.php">
+		<button type="submit">Change Background Color</button>
+	</form>
+	</div>
+	</body>
+<html>
