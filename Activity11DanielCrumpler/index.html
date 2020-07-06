@@ -1,0 +1,34 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="scripts/my_app.js" defer></script>
+        <link href="style/style.css" rel="stylesheet" type="text/css">
+        <title>Vue App</title>
+    </head>
+    <body>
+        <div class="nav-bar"></div>
+        <div id="app">
+            <div class="product">
+                <div class="product-image">
+                    <img :src="images"/>
+                </div>
+                <div class="product-info">
+                    <h1>{{ title }}</h1>
+                    <p> {{ stock }}</p>
+                    <p>{{ sale }}</p>
+                    <ul>
+                        <li v-for="detail in details">{{ detail }}</li>
+                    </ul>
+                    <h3>Available Colors</h3>
+                    <div class="color-box" v-for="(aVariant, index) in variants" :key="aVariant.variantId" :style="{backgroundColor: aVariant.variantColor}" @mouseover="updateProduct(index)"></div>
+                    <button v-on:click="addToCart" :disabled="!inStock" :class="{ disabledButton: !inStock }">Add to cart
+        </button>
+                    <div class="cart">
+                        <p>Cart ({{ cart }})</p>
+                    </div>
+                </div>
+            </div>
+        </div>
