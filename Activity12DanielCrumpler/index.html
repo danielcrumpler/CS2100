@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Swim Shop Product App</title>
+        <link rel="stylesheet" type="text/css" href="styles/style.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="scripts/main.js" defer></script>
+    </head>
+    <body>
+        <div class="nav-bar">
+            <a>Home</a>
+            &gt;<a>Swimwear</a>
+            &gt;<a>Women &#39;s Swimwear</a>
+            &gt;<a>Tech Suits</a>
+        </div>
+        <div id="app">
+            <div id="product">
+                <section id="view_product">
+                    <div id="product_image">
+                        <ul>
+                            <li v-for="(image, index) in productImages">
+                                <img @mouseover="updateThumbnail(index)" width="99" height="112" :alt="image.altText" :src="image.image">
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="product_view">
+                        <img width="422" height="500" :alt="productView.altText" :src="productView.url">
+                    </div>
+                    <div>
+                        <div id="product_info">
+                            <h1 :class="{active: qtyInventory > 0, out: qtyInventory == 0}">{{title}}
+			</h1>
+                            <span class="sale" v-show="qtyInventory > 0 && qtyInventory <= 4">On Sale!</span>
+                            <p>I love my {{product_value}}!</p>
+                            <p v-if="qtyInventory > 10">In Stock</p>
+                            <p v-else-if="qtyInventory <= 4 && qtyInventory > 0">Almost sold out!</p>
+                            <p v-else>Out of Stock</p>
+                            <h3>Available colors:</h3>
+                            <div class="color-box" v-for="(swatchObject, index) in colorSwatches" :key="swatchObject.variantId" :style="{backgroundImage: 'url(' + swatchObject.variantSwatch + ')'}" @mouseover="updateProduct(index)"></div>
+                        </div>
+                        <div id="cart_area">
+                            <div>
+                                <button @click="addToCart" :disabled="qtyInventory == 0" :class="{disabledButton: qtyInventory == 0}">Add to Cart</button>
+                                <br>
+                                <button @click="removeFromCart" :disabled="cart == 0" :class="{disabledButton: cart == 0}">Remove from Cart</button>
+                            </div>
+                            <div id="cart" :class="{active: cart != 0, 'text-danger': cart == 0}">
+                                <p>Cart ({{cart}})</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="product_details">
+                    <h2>Product Details</h2>
+                    <p>{{ description }}
+	  </p>
+                    <div id="two-col">
+                        <div id="features">
+                            <h4>Features</h4>
+                            <ul>
+                                <li v-for="feature in features">{{ feature }}</li>
+                            </ul>
+                        </div>
+                        <div id="details">
+                            <h4>Details</h4>
+                            <ul>
+                                <li v-for="detail in details">{{ detail }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>
