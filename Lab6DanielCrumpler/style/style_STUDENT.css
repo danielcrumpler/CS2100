@@ -1,0 +1,400 @@
+/* General styles */
+html {
+    color: #eee;
+    font-family: 'Avenir-Book', 'Avenir';
+    font-size: 10px;
+    background-image: url(../images/bg.png);
+}
+
+header, main, footer { 
+	display: block; 
+}
+
+body {
+    margin: 0;
+}
+
+/* styles for all pages  */
+#wrapper {
+    width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #333333; 
+}
+
+#title h1{
+    writing-mode: vertical-lr;
+    float: left;
+    font-size: 2.2em;
+    margin: 1em 0 0 .9em;
+    font-family: 'Strait', fantasy;
+    display: inline;
+    letter-spacing: .2em;
+    word-spacing: .15em;
+}
+
+header h1 { 
+	padding: .35em 0 .35em 1em;
+	margin-top: 0;
+    font-family: serif, 'Times New Roman' ;
+	color: #fff;
+	font-size: 3em;
+	background: linear-gradient(90deg, #0473bb 50%, #333 );
+}
+
+#page_head .left{
+    border-radius: 10.5em 0 0 10.5em;
+    border-left: .5em #999 solid;
+    border-top: .05em solid #999;
+    border-bottom: .05em solid #999;
+}
+
+#page_head .center{
+    border-top: .05em solid #999;
+    border-bottom: .05em #999 solid;
+}
+
+#page_head .right{
+    border-radius: 0 10.5em 10.5em 0 ;
+    border-right: .5em #999 solid;
+    border-top: .05em solid #999;
+    border-bottom: .05em solid #999;
+}
+
+#page_head img {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+main{
+    background-color: aliceblue;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    color: #333;
+    text-align: left;
+    padding: 1.5em;
+    line-height: 1.75em;
+    border-radius: 1.5em;
+    box-shadow: inset .2em .2em .2em .2em #333333
+}
+
+/* Follow instructions and implement the rulesets based on description */
+#container, footer p{    
+    text-align: center;
+}
+
+footer {
+    margin: 2em;
+    padding-bottom: 5em;
+}
+
+header{
+	margin-top: 0;	
+	padding: 0;	
+}
+/* CHANGED */
+nav { 
+	text-align: center;
+	color: white;
+}
+
+/* CHANGED */
+nav ul {
+	margin: 0;	
+    
+}
+
+/* CHANGED */
+nav li {
+    list-style-type: none;
+    
+}
+
+/* CHANGED */
+nav a, footer a{ 
+	text-decoration: none;
+	font-size:2em;
+	padding: 1em;
+    line-height: 2em;
+    color: #fff;
+}
+
+/* ADDED */
+#credits{
+    text-align: center;
+    font-size: .65em;
+}
+
+/* ADDED */
+#social_menu{
+    padding-top: 1em;
+    padding-right: 1em;
+    display: flex;
+    width: 12em;
+    float: right;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+/* ADDED */
+.sm_icon, .col{
+    display: inline;
+}
+
+/* ADDED */
+.col ul{
+    width: 20em;
+}
+
+/* ADDED */
+#facility{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+/* ADDED */
+.footer_container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2em;
+    text-align: left;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ADDED */
+.footer_logos{
+    display: flex;
+    grid-column: 1/4;
+    grid-row: 1;
+    justify-content: center;
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+/* ADDED */
+.footer_logo{
+    display: inline;
+}
+
+/* ADDED */
+.footer_section ul{
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    
+}
+
+/* ADDED */
+.sponsors{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 80%;
+    margin-left: auto;
+    margin-bottom: 3em;
+    margin-right: auto;
+}
+
+/* ADDED */
+.sponsorship_header{
+    grid-column: 1/4;
+    grid-row: 1;
+    border-top: groove 3px #ccc;
+    margin-top: 3em;
+}
+
+/* ADDED */
+.sponsorship_header h1{
+    font-size: 2rem;
+    text-align: center;
+}
+
+td:first-child, th:first-child {
+    border-right: dashed 1px #0473bb;
+    text-align: center;
+}
+caption{
+    font-family: 'rock salt',cursive;
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+td:first-child{
+    font-weight: bold;
+}
+
+td{
+    padding: .5em 1em .5em 1em;
+    line-height: 1.5em;
+}
+
+th {
+    text-align: center;
+    border-bottom: dashed 1px #0473bb;
+}
+
+tr:nth-of-type(even){
+    background-color: rgba(4,115,187, .1);
+}
+table{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+nav a:visited{
+    color: #ccc;
+}
+
+nav a:hover{
+    color: #fff;
+    text-decoration-line: underline;    
+}
+
+main h2, dt, main a {
+	color: #1483cc;	  
+    text-decoration: none;
+}
+
+main p::first-line {
+    font-variant: small-caps;
+}
+
+main h2{
+    font-family: serif, 'Times New Roman'
+}
+
+footer a{
+    font-size: 1em;
+}
+
+footer a:hover{
+    color: cornsilk;
+    text-decoration: underline;
+}
+
+/* This is for the home page only. */
+.school{
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#ironcross{
+    background-image: url(../images/ironcross.png);
+    width: 179px;
+    height: 281px;
+    float: right;
+}
+
+/* ADDED */
+.desktop{
+    display: inline;
+}
+
+/* ADDED */
+.mobile{
+    display: none;
+}
+
+/* ADDED */
+@media only screen and (max-width: 985px){
+    body{
+        background-image: none;
+    }
+    #wrapper{
+        width: auto;
+        margin: 0;
+        padding: 0;
+    }
+    
+    #title h1 {
+        writing-mode: horizontal-tb;
+        display: block;
+        float: none;
+        text-align: center;
+        margin-left: 0;
+        font-size: 4em;
+    }
+    #social_menu{
+        width: 5em;
+        flex-direction: column;
+        position: sticky;
+        top: 2em;
+        right: 2em;
+    }
+    
+    #ironcross{
+        display: none;
+    }
+    
+    #facility{
+        margin-left: 4em;
+    }
+}
+
+/* ADDED */
+@media only screen and (max-width: 768px) {
+    #page_head, .desktop{
+        display: none;
+    }
+    
+    nav ul{
+        display:block;
+        width: 100%;
+        padding-left: 0;
+        height: 100%;
+    }
+    
+    nav li{
+        display: block;
+        width: 100%;
+        background-image: linear-gradient(to top, #333, #555);
+    }
+    
+    nav a{
+        text-align: left;
+        display: block;
+        padding-bottom: .25em;
+        padding-top: .25em;
+        padding-left: 30px;
+    }
+    
+    .mobile{
+        display: inline;
+    }
+    
+    #facility{
+        display: block;       
+    }
+    
+    #facility li{
+        font-size: 1rem;
+        line-height: 2rem
+    }
+    .sponsors{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 90%;
+        margin-left: auto;
+        margin-bottom: 3em;
+        margin-right: auto;
+    }
+
+    .sponsorship_header{
+        grid-column: 1/3;
+        grid-row: 1;
+        border-top: groove 3px #ccc;
+        margin-top: 3em;
+    }
+    
+    .footer_container{
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .footer_logos{
+        grid-column: 1/3;
+    }
+}
