@@ -1,0 +1,23 @@
+html {
+  font-family: sans-serif;
+}
+body {
+  width: 50%;
+  max-width: 800px;
+  min-width: 480px;
+  margin: 0 auto;
+}
+.lastResult {
+  color: white;
+  padding: .5em;
+}
+.setup{
+  border-bottom: 1px solid black;
+  margin-bottom: 2em;
+  padding-bottom: .5em;
+}
+
+.lowOrHi {
+  color: white;
+  padding: .5em;
+}
