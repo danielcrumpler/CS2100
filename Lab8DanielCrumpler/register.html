@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CSG :: FAQ</title>
+    <meta charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Strait' rel='stylesheet'>
+    <link href="style/style.css" rel="stylesheet">
+    <script src="scripts/validate_form.js" defer></script>
+  </head>
+  <body>
+    <section id="title">
+    <h1>Carrollton School of Gymnastics</h1>
+    </section>
+    <section id="wrapper">
+    <section id="social_menu">
+    <div class="sm_icon">
+        <a href="#"><img width="30" height="30" src="images/logos/facebookoutline.svg"></a>
+    </div>
+    <div class="sm_icon">
+        <a href="#"><img width="30" height="30" src="images/logos/instagram.svg"></a>
+    </div>
+    <div class="sm_icon">
+        <a href="#"><img width="30" height="30" src="images/logos/twitter.svg"></a>
+    </div>  
+    </section>
+    <nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="class.html">Classes</a></li><li><a href="about.html">About Us</a></li><li><a href="faq.html">FAQ</a></li>
+        <li><a href="register.html">Register</a></li>
+    </ul>
+    </nav>
+    <header>
+      <h1>Register</h1>
+    </header>
+    <main>   
+<!--      http://www.westga.edu/~crolka/scripts/submit.php
+
+https://webdevbasics.net/scripts/pacific.php
+-->
+      
+      <form method="post" id="registration_form" action="https://www.westga.edu/~crolka/CSG/scripts/submit.php">
+      <div id="errors" class="hidden error">
+        <ul>
+        </ul>
+      </div>  
+      <h2>Parent Information</h2>
+        <p>Required fields are followed by <strong><abbr title="required">*</abbr></strong>.</p>
+        <section>
+          <p id='fname'>
+            <label for="first_name">
+                <span>First Name: </span>
+                <strong><abbr title="required">*</abbr></strong>
+            </label>
+            <input type="text" id="first_name" name="first_name" class="req">
+          </p>
+          <p id='lname'>
+            <label for="last_name">
+              <span>Last Name: </span>
+              <strong><abbr title="required">*</abbr></strong>
+            </label>
+            <input type="text" id="last_name" name="last_name" class="req">
+          </p>
+          <p id='email'>
+            <label for="mail">
+              <span>E-mail: </span>
+              <strong><abbr title="required">*</abbr></strong>
+            </label>
+            <input type="email" id="mail" name="usermail" class="req">
+          </p>
+          <p id='uname'>
+            <label for="username">
+              <span>User Name: </span>
+              <strong><abbr title="required">*</abbr></strong>
+            </label>
+            <input type="text" id="username" name="username" class="req">
+          </p>
+          <p id='pword'>
+            <label for="pwd">
+              <span>Password: </span>
+              <strong><abbr title="required">*</abbr></strong>
+            </label>
+            <input type="password" id="pwd" name="password" class="req">
+          </p>
+          </section>
+          <section>
+            <h2>Child's information</h2>
+            <p id='cfname'>
+              <label for="child_firstname">
+              <span>First Name: </span>
+              <strong><abbr title="required">*</abbr></strong>
+              </label>
+              <input type="text" id="child_firstname" name="child_firstname" class="req">
+            </p>
+            <p id='clname'>
+              <label for="child_lastname">
+              <span>Last Name: </span>
+              <strong><abbr title="required">*</abbr></strong>
+              </label>
+              <input type="text" id="child_lastname" name="child_lastname" class="req">
+            </p>
+            <p id='cdob'>
+              <label for="child_birthdate">
+              <span>Birth Date: </span>
+              <strong><abbr title="required">*</abbr></strong>
+              </label>
+              <input type="date" id="child_birthdate" name="child_birthdate" class="req">
+            </p>
+            <fieldset>
+              <legend>Gender</legend>
+              <ul>
+              <li>
+                <label for="gender_f">
+                  <input type="radio" id="gender_f" name="gender" value="F" >
+                  Female
+                </label>
+              </li>
+              <li>
+                <label for="gender_m">
+                  <input type="radio" id="gender_m" name="gender" value="M">
+                  Male
+                </label>
+              </li>
+              </ul>
+            </fieldset>
+          </section>
+          <section>
+            <h2>Pediatrician Information:</h2>
+            <p id='pedname'>
+              <label for="pediatrician_name">
+                  <span>Pediatrician&#39;s Name: </span>
+              </label>
+              <input type="text" id="pediatrician_name" name="pediatrician_name">
+            </p>
+            <p id='pedphone'>
+              <label for="pediatrician_phone">
+                <span>Pediatrician&#39;s Phone: </span>
+              </label>
+              <input type="tel" id="ped_phone" name="ped_phone">
+            </p>
+          </section>
+          <section>
+            <h2>Registration Type:</h2>
+              <label for="registration_type">Registration: <strong><abbr title="required">*</abbr></strong></label>
+              <select id="registration_type" name="registration_type" class="req">
+                <option value="">--- Please Select Registration Type ---</option>
+                <option value="class_registration">Class</option>
+                <option value="competitive_team">Competitive Team</option>
+              </select>
+        </section>
+        <section id="class_selection" name="class_selection">
+            <h2>Class Registration:</h2>
+           
+            <p>Select the class you wish to register your child:</p>
+            <select id="class_reg" name="class_reg">
+                <option value="">--- Please select a class ---</option>
+                <option value="parent-tot">Parent &amp; Tot</option>
+                <option value="kindergym">KinderGym</option>
+                <option value="gymnastics">Pre-team Gymnastics</option>
+                <option value="tumbling">Tumbling</option>
+            </select>
+            <!--<fieldset>
+              <legend>Classes Offered</legend>
+              <label for="parent-tot">
+                <span>Parent &amp; Tot:</span>
+              </label>
+                <input type="checkbox" id="parent-tot" name="classes" value="parent-tot">
+              <label for="kindergym">
+                <span>KinderGym:</span>
+              </label>
+                <input type="checkbox" id="kindergym" name="classes" value="kindergym">
+              <label for="gymnastics">
+                <span>Gymnastics:</span>
+              </label>
+                <input type="checkbox" id="gymnastics" name="classes" value="gymnastics">
+              <label for="tumbling">
+                <span>Tumbling:</span>
+              </label>
+                <input type="checkbox" id="tumbling" name="classes" value="tumbling">
+            </fieldset>-->
+          </section>
+          <section id="competition" name="competition">
+            <h2>Competitive Team Registration:</h2>
+            <p>For those who wish to join the boys/girls competitive team.</p>
+            <p>
+              <label for="level">
+                <span>Competition Level:</span>
+              </label>
+              <select id="level" name="level">
+                <option value="">--- Please select a level ---</option>
+                <option value="4">Level 4</option>
+                <option value="5">Level 5</option>
+                <option value="6">Level 6 </option>
+                <option value="7">Level 7</option>
+                <option value="jd">Level JD</option>
+                <option value="8">Level 8</option>
+                <option value="9">Level 9 </option>
+                <option value="10">Level 10</option>
+              </select>
+            </p>
+          </section>
+          <section>
+            <input type="checkbox" id="terms" name="terms" value="i_agree">
+            <label for="terms">
+              <span>I agree to the terms and conditions of class registration:</span>
+            </label>
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+          </section>
+        </form>
+        </main>
+        <footer>
+        <section class="footer_container">
+            <div class="footer_logos">
+            <div class="footer_logo">
+                <a href="http://www.fig-gymnastics.com/" target="_blank">
+                <img src="images/logos/footerLogo-FIG.png" width="40" height="40" alt="FIG Logo">
+                </a>
+            </div>
+            <div class="footer_logo">
+                <a href="http://www.teamusa.org/" target="_blank">
+                <img src="images/logos/footerLogo-teamUSA.png" width="40" height="40" alt="Team USA Logo">
+                </a>
+            </div>
+            </div>
+            <div class="footer_section">
+            <h2 class="footer_section_header">Gymnastics Programs</h2>
+                <ul>
+                <li><a href="#">Women</a></li>
+                <li><a href="#">Men</a></li>
+                <li><a href="#">Rhythmic</a></li>
+                <li><a href="#">Trampoline &amp;Tumbling</a></li>
+                <li><a href="#">Acrobatic</a></li>
+                <li><a href="#">Gfa</a></li>
+                </ul>
+            </div>
+            <div class="footer_section">
+            <h2 class="footer_section_header">Member Services</h2>
+                <ul>
+                <li><a href="#">Private Class Discounts</a></li>
+                <li><a href="#">Private Session Access</a></li>
+                </ul>
+            </div>
+            <div class="footer_section">
+            <h2 class="footer_section_header">Parents</h2>
+                <ul>
+                <li><a href="#">Becoming an Official</a></li>
+                <li><a href="#">Benefits of officiating</a></li>
+                <li><a href="#">Education</a></li>
+                <li><a href="#">Volunteer</a></li> 
+                <li><a href="#">CSG Parent Organization</a></li>
+                <li><a href="#">Safe Sport</a></li>
+                </ul>
+            </div>
+            <div class="footer_section">
+            <h2 class="footer_section_header">Media Resources</h2>
+                <ul>
+                <li><a href="#">Competition Gallery</a></li>
+                <li><a href="#">CSG in the News</a></li>
+                <li><a href="#">CSG Logos</a></li>
+                <li><a href="#">Sponsorship Packets</a></li>
+                </ul>
+            </div>
+            <div class="footer_section">
+            <h2 class="footer_section_header">Upcoming Events</h2>
+                <ul>
+                <li><a href="#">GAA Invitational</a></li>
+                <li><a href="#">Roswell Invite</a></li>
+                <li><a href="#">Paws For Cause</a></li>
+                <li><a href="#">State Meet</a></li>
+                <li><a href="#">Regional Meet</a></li>
+                <li><a href="#">FIG Nationals</a></li>
+                </ul>
+            </div>
+            <div class="footer_section">
+            <h2 class="footer_section_header">About</h2>
+                <ul>
+                <li><a href="#">About CSG Gymnastics</a></li>
+                <li><a href="#">Employment</a></li>
+                <li><a href="https://usagym.org/pages/aboutus/pages/permanently_ineligible_members.html">Permanently Ineligible Members</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="mailto:yourfirstname@yourlastname.com">Contact Us</a></li>
+                </ul>
+            
+            </div>
+
+        </section>
+        <section class="sponsors">
+        <div class="sponsorship_header">
+            <h1>Our Sponsors</h1>
+        </div>
+        <div class="sponsorship">
+            <h2>Douglas Chiropractic</h2>
+            <a href="#"><img src="images/sponsors/douglas_chiropractic.png" width="50%" height="50%"></a>
+        </div>
+        <div class="sponsorship">
+            <h2>Legal Shield</h2>
+            <a href="#"><img src="images/sponsors/legalshield.png" width="50%" height="50%"></a>
+        </div>
+        <div class="sponsorship">
+            <h2>Lighthouse Chiropractic</h2>
+            <a href="#"><img src="images/sponsors/lighthouse.png" width="50%" height="50%"></a>
+        </div>
+        <div class="sponsorship">
+            <h2>Positive Growth, Inc.</h2>
+            <a href="#"><img src="images/sponsors/pos_grow.png" width="50%" height="50%"></a>
+        </div>
+        <div class="sponsorship">
+            <h2>Project Friendship</h2>
+            <a href="#"><img src="images/sponsors/project-friendship.png" width="50%" height="50%"></a>
+        </div>
+        <div class="sponsorship">
+            <h2>Publix Charities</h2>
+            <a href="#"><img src="images/sponsors/publix_charities.png" width="50%" height="50%"></a>
+        </div>
+        </section>
+        <section id="credits">
+        <div class="credit_item">Social Media Icons made by 
+        <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from 
+        <a href="https://www.flaticon.com/"         title="Flaticon">www.flaticon.com</a>
+        </div>
+        <div class="credit_item">
+        Sponsorship images not used with permission and are for educational purposes only. 
+        </div>
+        </section> 
+        <p>Copyright &copy; 2019 Carrollton School of Gymnastics<br>
+        </p>
+        </footer>
+    </section>
+  </body>
+</html>
